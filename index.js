@@ -69,9 +69,20 @@ app.post("/api/department-attendance", async (req, res) => {
   }
 });
 
+
+//
 app.get("/running", (req, res) => {
   res.send("Running");
 })
+
+const axios = require("axios");
+
+setInterval(async () => {
+  const res = await axios.get("https://csv-api-server.onrender.com/running");
+  console.log(res.data);
+}, 420000)
+//
+
 
 // Start Server
 app.listen(PORT, () => {
